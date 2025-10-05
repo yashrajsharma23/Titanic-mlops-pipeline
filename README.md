@@ -9,15 +9,16 @@ Titanic-ML/
 │
 ├── src/                     # Source code
 │   ├── __init__.py
-│   ├── data.py              # Load dataset
+│   ├── load_data.py         # Load dataset
+│   ├── eda.py               # Visualizing data
 │   ├── preprocess.py        # Build preprocessing pipeline
 │   ├── train.py             # Train ML model
-│   ├── evaluate.py          # Evaluate model
-│   └── utils.py             # Helper functions
+│   └── predict.py           # Evaluate model
 │
 ├── tests/                   # Unit tests
 │   └── test_preprocess.py   # Tests for preprocessing pipeline
 │
+├── run_pipeline.py          # Pipeline execution
 ├── .github/workflows/ci.yml # GitHub Actions CI workflow
 ├── requirements.txt         # Dependencies
 └── README.md                # Project documentation

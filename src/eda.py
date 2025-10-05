@@ -16,5 +16,5 @@ def eda(df: Optional[pd.DataFrame] = None):
     plt.show()
 
 
-# if __name__ == "__main__":
-#     eda()
+if __name__ == "__main__":
+    eda()

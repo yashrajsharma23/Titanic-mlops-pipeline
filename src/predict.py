@@ -1,9 +1,13 @@
 import joblib
 import pandas as pd
+import mlflow
 
 def predict(sample: pd.DataFrame, model_path: str = "models/titanic_model.pkl"):
     #Load saved pipeline
-    clf = joblib.load(model_path)
+    # clf = joblib.load(model_path)
+    model_uri = f"runs:/{run_id}/titanic_model"
+    clf = mlflow.sklearn.load_model(model_uri)
+
 
     #Predict
     prediction = clf.predict(sample)

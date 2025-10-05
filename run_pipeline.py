@@ -12,8 +12,14 @@ def main():
 
     # print("🔹 Step 3: Preprocessing...")
     # clean_df = clean_data(df)
+    custom_params = {
+        "n_estimators": 200,
+        "max_depth": 10,
+        "min_samples_split": 5,
+        "random_state": 42
+    }
 
-    model = train_model()
+    model = train_model(model_params=custom_params)
 
     print("✅ Pipeline completed successfully!")
 

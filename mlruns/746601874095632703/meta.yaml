@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/746601874095632703
+creation_time: 1759508387202
+experiment_id: '746601874095632703'
+last_update_time: 1759508387202
+lifecycle_stage: active
+name: Titanic-Classification
