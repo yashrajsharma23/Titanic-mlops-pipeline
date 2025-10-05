@@ -75,7 +75,7 @@ jobs:
           MLFLOW_TRACKING_URI: ${{ env.MLFLOW_TRACKING_URI }}
         run: python -m src.train
       - name: Upload model artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: trained-model
           path: |
@@ -96,7 +96,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Download model artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: trained-model
       - name: Run model evaluation tests
@@ -116,7 +116,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt mlflow
       - name: Download model artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: trained-model
       - name: Deploy to MLflow Model Registry
