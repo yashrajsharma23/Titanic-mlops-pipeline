@@ -1,0 +1,84 @@
+{
+  "dataframe_split": {
+    "columns": [
+      "PassengerId",
+      "Pclass",
+      "Name",
+      "Sex",
+      "Age",
+      "SibSp",
+      "Parch",
+      "Ticket",
+      "Fare",
+      "Cabin",
+      "Embarked"
+    ],
+    "data": [
+      [
+        693,
+        3,
+        "Lam, Mr. Ali",
+        "male",
+        NaN,
+        0,
+        0,
+        "1601",
+        56.4958,
+        null,
+        "S"
+      ],
+      [
+        482,
+        2,
+        "Frost, Mr. Anthony Wood \"Archie\"",
+        "male",
+        NaN,
+        0,
+        0,
+        "239854",
+        0.0,
+        null,
+        "S"
+      ],
+      [
+        528,
+        1,
+        "Farthing, Mr. John",
+        "male",
+        NaN,
+        0,
+        0,
+        "PC 17483",
+        221.7792,
+        "C95",
+        "S"
+      ],
+      [
+        856,
+        3,
+        "Aks, Mrs. Sam (Leah Rosen)",
+        "female",
+        18.0,
+        0,
+        1,
+        "392091",
+        9.35,
+        null,
+        "S"
+      ],
+      [
+        802,
+        2,
+        "Collyer, Mrs. Harvey (Charlotte Annie Tate)",
+        "female",
+        31.0,
+        1,
+        1,
+        "C.A. 31921",
+        26.25,
+        null,
+        "S"
+      ]
+    ]
+  }
+}

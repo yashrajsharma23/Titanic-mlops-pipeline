@@ -1,5 +1,5 @@
 {
-  "run_id": "69b12aaf737f4ef2a5fe981549a1c6ee",
+  "run_id": "46ebaf04f1394a078ab49048c83015d1",
   "experiment_id": "746601874095632703",
   "metrics": {
     "train_accuracy": 0.922752808988764,
@@ -9,5 +9,5 @@
     "test_precision": 0.8181818181818182,
     "test_recall": 0.6521739130434783
   },
-  "timestamp": "2025-10-03T12:19:56.502440"
+  "timestamp": "2025-10-05T19:15:31.935066"
 }

@@ -1,0 +1,10 @@
+artifact_location: mlflow-artifacts:/746601874095632703/models/m-91e7c92e8e4845b6adfd7e4592a1bb0b/artifacts
+creation_timestamp: 1759700571536
+experiment_id: '746601874095632703'
+last_updated_timestamp: 1759700575062
+model_id: m-91e7c92e8e4845b6adfd7e4592a1bb0b
+model_type: ''
+name: titanic_model
+source_run_id: fb9996819bf34747b311a03dfaa2bd56
+status: 2
+status_message: null

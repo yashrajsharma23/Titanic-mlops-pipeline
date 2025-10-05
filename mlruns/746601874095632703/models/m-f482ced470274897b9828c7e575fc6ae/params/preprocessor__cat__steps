@@ -1,0 +1,2 @@
+[('imputer', SimpleImputer(strategy='most_frequent')), ('encoder', OneHotEncoder(categories=[['female', 'male'], ['C', 'Q', 'S']],
+              handle_unknown='ignore'))]

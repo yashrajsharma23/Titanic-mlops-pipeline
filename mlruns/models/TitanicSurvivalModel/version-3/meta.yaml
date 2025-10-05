@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1759706131571
+current_stage: None
+description: ''
+last_updated_timestamp: 1759706131571
+name: TitanicSurvivalModel
+run_id: 46ebaf04f1394a078ab49048c83015d1
+run_link: ''
+source: mlflow-artifacts:/746601874095632703/46ebaf04f1394a078ab49048c83015d1/artifacts/titanic_model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/746601874095632703/46ebaf04f1394a078ab49048c83015d1/artifacts/titanic_model
+user_id: null
+version: 3
