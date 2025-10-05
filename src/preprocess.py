@@ -4,6 +4,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
+import numpy as np
 
 def build_preprocessor() ->ColumnTransformer:
     """Build Preprocessing pipeline for Numerical and Categorical data"""
@@ -19,7 +20,7 @@ def build_preprocessor() ->ColumnTransformer:
 
      # Preprocessing for categorical data
     categorical_transformer  = Pipeline(steps=[
-        ("imputer", SimpleImputer(strategy="most_frequent")),
+        ("imputer", SimpleImputer(strategy="most_frequent", missing_values=np.nan)),
         ("encoder", OneHotEncoder(categories=[["female","male"], ["C","Q","S"]],handle_unknown="ignore"))
     ])
 

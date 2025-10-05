@@ -5,6 +5,7 @@ import pytest
 # sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from src.preprocess import build_preprocessor
+import numpy as np
 
 # 1. Test that the pipeline runs without errors
 def test_preprocessor_runs():
@@ -19,6 +20,7 @@ def test_preprocessor_runs():
         "Embarked": ["S", None, "C"]
     })
 
+    df = df.replace({None: np.nan})
     preprocessor = build_preprocessor()
     X_transformed = preprocessor.fit_transform(df)
 
@@ -35,6 +37,8 @@ def test_missing_values_handled():
         "Sex": ["male", "female"],
         "Embarked": [None, "S"]
     })
+
+    df = df.replace({None: np.nan})
 
     preprocessor = build_preprocessor()
     X_transformed = preprocessor.fit_transform(df)
@@ -56,6 +60,7 @@ def test_categorical_encoding_shape():
         "Sex": ["male", "female"],
         "Embarked": ["S", "C"]
     })
+    df = df.replace({None: np.nan})
 
     preprocessor = build_preprocessor()
     X_transformed = preprocessor.fit_transform(df)
@@ -74,6 +79,7 @@ def test_feature_names():
         "Sex": ["male", "female"],
         "Embarked": ["S", "C"]
     })
+    df = df.replace({None: np.nan})
 
     preprocessor = build_preprocessor()
     preprocessor.fit(df)

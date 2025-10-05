@@ -17,6 +17,7 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
 from typing import Optional, Dict, Any
 from datetime import datetime
+import numpy as np
 
 import joblib
 import json
@@ -49,7 +50,7 @@ def train_model(
     
     print("Inside Train model")
     df = load_dataset()
-
+    df = df.replace({None: np.nan})
     X = df.drop("Survived", axis=1)
     y = df["Survived"]
     preprocessor =build_preprocessor()
@@ -64,16 +65,15 @@ def train_model(
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
     
     # If running MLflow locally (UI at http://127.0.0.1:5000)
-    # mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000"))
-    mlflow.set_tracking_uri("http://127.0.0.1:5000")
-    # mlflow.set_tracking_uri("file:./mlruns")
-    print("ML Flow set Tracking URI")
+    mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000"))
+    # mlflow.set_tracking_uri("http://127.0.0.1:5000"))
+
     # Optional: organize experiments
     mlflow.set_experiment("Titanic-Classification")
-    print("ML Flow experiment set")
+
     # Enable autologging for sklearn (logs params, metrics, model automatically)
     mlflow.sklearn.autolog(log_input_examples=True, log_model_signatures=True)
-    print("ML Flow Autolog")
+
     #MLFlow start
     with mlflow.start_run(run_name=f"rf_model_{datetime.now().strftime('%Y%m%d_%H%M%S')}") as run:
         run_id = run.info.run_id
