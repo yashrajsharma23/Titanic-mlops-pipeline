@@ -71,9 +71,12 @@ def train_model(
     # else:
     #     mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000"))
     configure_mlflow()
-    
+
     # Optional: organize experiments
     mlflow.set_experiment("Titanic-Classification")
+
+    # Disable proxy artifact scheme for local runs
+    os.environ["MLFLOW_ARTIFACT_URI"] = "./mlruns"
 
     # Enable autologging for sklearn (logs params, metrics, model automatically)
     mlflow.sklearn.autolog(log_input_examples=True, log_model_signatures=True)
@@ -117,7 +120,7 @@ def train_model(
         disp = ConfusionMatrixDisplay(confusion_matrix=cm)
         disp.plot()
         plt.savefig("metrics/confusion_matrix.png")
-        mlflow.log_artifact("metrics/confusion_matrix.png")
+        mlflow.log_artifact("metrics/confusion_matrix.png", artifact_path="metrics")
         plt.close()
 
         # Log feature importance if available
@@ -130,7 +133,7 @@ def train_model(
             plt.title("Feature Importance")
             plt.tight_layout()
             plt.savefig("metrics/feature_importance.png")
-            mlflow.log_artifact("metrics/feature_importance.png")
+            mlflow.log_artifact("metrics/feature_importance.png", artifact_path="metrics")
             plt.close()
 
 
