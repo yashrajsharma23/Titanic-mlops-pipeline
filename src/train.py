@@ -70,13 +70,18 @@ def train_model(
     #     mlflow.set_tracking_uri("file:./mlruns")
     # else:
     #     mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000"))
-    configure_mlflow()
+    # configure_mlflow()
+    mlflow.set_tracking_uri("file:./mlruns")
+
+    # Disable proxy artifact scheme for local runs
+    os.environ["MLFLOW_ARTIFACT_URI"] = "./mlruns"
+
+    os.environ["MLFLOW_ARTIFACTS_ENABLE_PROXY"] = "false"  # ✅ disable proxy
+    mlflow.set_registry_uri("")  # prevent proxy lookups
 
     # Optional: organize experiments
     mlflow.set_experiment("Titanic-Classification")
 
-    # Disable proxy artifact scheme for local runs
-    os.environ["MLFLOW_ARTIFACT_URI"] = "./mlruns"
 
     # Enable autologging for sklearn (logs params, metrics, model automatically)
     mlflow.sklearn.autolog(log_input_examples=True, log_model_signatures=True)
