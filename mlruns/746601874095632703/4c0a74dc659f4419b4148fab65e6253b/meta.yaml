@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/746601874095632703/4c0a74dc659f4419b4148fab65e6253b/artifacts
+end_time: 1759710412338
+entry_point_name: ''
+experiment_id: '746601874095632703'
+lifecycle_stage: active
+run_id: 4c0a74dc659f4419b4148fab65e6253b
+run_name: rf_model_20251005_202643
+run_uuid: 4c0a74dc659f4419b4148fab65e6253b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1759710404390
+status: 4
+tags: []
+user_id: yashh
