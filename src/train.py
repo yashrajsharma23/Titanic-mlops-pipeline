@@ -65,13 +65,11 @@ def train_model(
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
     
     # mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000"))
-    # mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "file:./mlruns"))
-    # if os.getenv("CI") == "true":
-    #     mlflow.set_tracking_uri("file:./mlruns")
-    # else:
-    #     mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000"))
+    if os.getenv("CI") == "true":
+        mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "s3://mlops-titanic-s3/mlruns"))
+    else:
+        mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000"))
     # configure_mlflow()
-    mlflow.set_tracking_uri("file:./mlruns")
 
     # Disable proxy artifact scheme for local runs
     os.environ["MLFLOW_ARTIFACT_URI"] = "./mlruns"
