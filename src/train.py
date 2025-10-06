@@ -66,11 +66,12 @@ def train_model(
     
     # mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000"))
     # mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "file:./mlruns"))
-    if os.getenv("CI") == "true":
-        mlflow.set_tracking_uri("file:./mlruns")
-    else:
-        mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000"))
-
+    # if os.getenv("CI") == "true":
+    #     mlflow.set_tracking_uri("file:./mlruns")
+    # else:
+    #     mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000"))
+    configure_mlflow()
+    
     # Optional: organize experiments
     mlflow.set_experiment("Titanic-Classification")
 
@@ -167,6 +168,25 @@ def train_model(
         print(f"✅ Run info saved to models/run_info.json")
 
     return clf
+
+def configure_mlflow():
+    # Check if we are in CI/CD (GitHub Actions sets CI=true automatically)
+    is_ci = os.getenv("CI", "false").lower() == "true"
+
+    if is_ci:
+        # In CI/CD we expect a proper tracking server (http/https) via GitHub Secret
+        tracking_uri = os.getenv("MLFLOW_TRACKING_URI")
+        if not tracking_uri:
+            raise RuntimeError(
+                "MLFLOW_TRACKING_URI must be set in CI/CD (e.g. to Databricks or MLflow server)"
+            )
+        mlflow.set_tracking_uri(tracking_uri)
+        print(f"[INFO] Using remote MLflow tracking server: {tracking_uri}")
+    else:
+        # Local dev: fall back to local file store or your running server
+        tracking_uri = os.getenv("MLFLOW_TRACKING_URI", "file:./mlruns")
+        mlflow.set_tracking_uri(tracking_uri)
+        print(f"[INFO] Using local MLflow tracking URI: {tracking_uri}")
 
 if __name__ == "__main__":
 # You can pass custom hyperparameters

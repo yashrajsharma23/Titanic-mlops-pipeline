@@ -1,0 +1,4 @@
+[('num', Pipeline(steps=[('imputer', SimpleImputer(strategy='median'))]), ['Age', 'Fare', 'Pclass', 'SibSp', 'Parch']), ('cat', Pipeline(steps=[('imputer', SimpleImputer(strategy='most_frequent')),
+                ('encoder',
+                 OneHotEncoder(categories=[['female', 'male'], ['C', 'Q', 'S']],
+                               handle_unknown='ignore'))]), ['Sex', 'Embarked'])]
