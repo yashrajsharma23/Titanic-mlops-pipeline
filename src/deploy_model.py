@@ -6,14 +6,11 @@ MLFLOW_TRACKING_URI = os.getenv("MLFLOW_TRACKING_URI", "hhttp://127.0.0.1:5000")
 
 mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
 
-# 2️⃣ Path to the run_info.json (downloaded via GitHub Actions)
-run_info_path = "models/run_info.json"
+experiment_name = "Titanic-Classification"
+experiment = mlflow.get_experiment_by_name(experiment_name)
+runs = mlflow.search_runs([experiment.experiment_id], order_by=["start_time DESC"], max_results=1)
+run_id = runs.iloc[0]["run_id"]
 
-# 3️⃣ Load run_info.json
-with open(run_info_path, "r") as f:
-    run_info = json.load(f)
-
-run_id = run_info["run_id"]
 print(f"Deploying model from run_id: {run_id}")
 
 # 4️⃣ Register the model in MLflow Model Registry
