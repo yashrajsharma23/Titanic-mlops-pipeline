@@ -150,6 +150,10 @@ jobs:
           python src/deploy_model.py
         env: 
           MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
+      - name: Set Git identity
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
       - name: Tag deployment
         run: |
           git tag -a "model-v$(date +%Y%m%d-%H%M%S)" -m "Model deployment"
