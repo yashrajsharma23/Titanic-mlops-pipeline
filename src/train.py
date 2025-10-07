@@ -123,7 +123,7 @@ def train_model(
         disp = ConfusionMatrixDisplay(confusion_matrix=cm)
         disp.plot()
         plt.savefig("metrics/confusion_matrix.png")
-        mlflow.log_artifact("metrics/confusion_matrix.png", artifact_path="metrics")
+        mlflow.log_artifact("metrics/confusion_matrix.png")
         plt.close()
 
         # Log feature importance if available
@@ -136,7 +136,7 @@ def train_model(
             plt.title("Feature Importance")
             plt.tight_layout()
             plt.savefig("metrics/feature_importance.png")
-            mlflow.log_artifact("metrics/feature_importance.png", artifact_path="metrics")
+            mlflow.log_artifact("metrics/feature_importance.png")
             plt.close()
 
 
