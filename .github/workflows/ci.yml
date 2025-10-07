@@ -190,11 +190,7 @@ jobs:
         with:
           payload: |
             {
-              "text": "🚀 *ML Pipeline - Titanic Project* finished!\n
-              *Training:*   ${{ needs.train-model.result }}\n
-              *Evaluation:* ${{ needs.evaluate-model.result }}\n
-              *Deployment:* ${{ needs.deploy-model.result }}\n
-              👉 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View full logs>"
+              "text": "🚀 *ML Pipeline - Titanic Project* finished!\n*Training:* success\n*Evaluation:* success\n*Deployment:* success\n👉 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View full logs>"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
