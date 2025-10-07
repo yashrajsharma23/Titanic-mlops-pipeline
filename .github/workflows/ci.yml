@@ -142,7 +142,7 @@ jobs:
       - name: Download model artifacts
         uses: actions/download-artifact@v4
         with:
-          name: trained-model
+          name: mlflow-runs
           path: models/
 
       - name: Deploy to MLflow Model Registry
