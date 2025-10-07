@@ -66,16 +66,16 @@ def train_model(
     
     # mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000"))
     if os.getenv("CI") == "true":
-        mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "s3://mlops-titanic-s3/mlruns"))
+        mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI"))
     else:
         mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000"))
     # configure_mlflow()
 
     # Disable proxy artifact scheme for local runs
-    os.environ["MLFLOW_ARTIFACT_URI"] = "./mlruns"
+    # os.environ["MLFLOW_ARTIFACT_URI"] = "./mlruns"
 
-    os.environ["MLFLOW_ARTIFACTS_ENABLE_PROXY"] = "false"  # ✅ disable proxy
-    mlflow.set_registry_uri("")  # prevent proxy lookups
+    # os.environ["MLFLOW_ARTIFACTS_ENABLE_PROXY"] = "false"  # ✅ disable proxy
+    # mlflow.set_registry_uri("")  # prevent proxy lookups
 
     # Optional: organize experiments
     mlflow.set_experiment("Titanic-Classification")
